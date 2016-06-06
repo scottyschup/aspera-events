@@ -1,6 +1,12 @@
 <h2>Create a new event:</h2>
 
 <%= form_for(@event) do |f| %>
+  <%= f.label 'Event name' %>
   <%= f.text_field :name %>
-  <%= f %>
+  <%= f.label 'Date' %>
+  <%= f.text_field %>
+  <%= f.label 'Time' %>
+  <%= f.label 'Minimum number of participants' %>
+  <%= f.text_field :minimum_number %>
+  <%= f.submit 'Enter' %>
 <% end %>

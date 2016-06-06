@@ -1,2 +1,14 @@
-<h1>Events#index</h1>
-<p>Find me in app/views/events/index.html.erb</p>
+<h1>Events</h1>
+<div class="events">
+  <%= button_to "Create New Event", new_event_path, class: "new-button button",
+    method: :get %>
+  <% @events.each do |event| %>
+    <div class="event">
+      <h2><%= event.name %>
+        <span class="small"> <%= event.game_type %></span>
+      </h2>
+      <p class="date"><%= event.date %></p>
+      <p><%= event.minimum_number %></p>
+    </div>
+  <% end %>
+</div>
