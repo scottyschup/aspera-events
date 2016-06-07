@@ -4,9 +4,15 @@
   <%= f.label 'Event name' %>
   <%= f.text_field :name %>
   <%= f.label 'Date' %>
-  <%= f.text_field %>
+  <%= f.text_field :date, class: 'datepicker' %>
   <%= f.label 'Time' %>
+  <%= f.text_field :time, class: 'timepicker' %>
   <%= f.label 'Minimum number of participants' %>
   <%= f.text_field :minimum_number %>
   <%= f.submit 'Enter' %>
 <% end %>
+
+<script type="text/javascript">
+  $('.datepicker').pickadate();
+  $('.timepicker').pickatime();
+</script>

@@ -41,7 +41,7 @@ class EventsController < ApplicationController
   def event_params
     params
       .require(:event)
-      .permit(:id, :name, :date, :game_type_id, :location, :minimum_number)
+      .permit(:id, :name, :date, :time, :game_type_id, :location, :minimum_number)
   end
 
   def set_event
