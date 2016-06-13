@@ -5,3 +5,60 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Location.create([
+  {
+    name: 'Aspera Game Room'
+  }, {
+    name: 'Doyle-Hollis Park'
+  }, {
+    name: 'Around the neighborhood'
+  }, {
+    name: 'Branch Line'
+  }, {
+    name: 'Summer Summer'
+  }, {
+    name: 'The Bureau'
+  }, {
+    name: 'Honor Bar'
+  }
+])
+
+GameType.create([
+  {
+    name: 'Ping Pong'
+  }, {
+    name: 'Volleyball'
+  },{
+    name: 'Soccer'
+  }, {
+    name: 'Basketball'
+  }, {
+    name: 'Walking'
+  }, {
+    name: 'Running'
+  }, {
+    name: 'Biking'
+  }, {
+    name: 'Happy Hour'
+  }
+])
+
+User.create([
+  {
+    name: 'Scott',
+    email: 'sschupbach'
+  }, {
+    name: 'Conan',
+    email: 'conan'
+  }
+])
+
+Event.create(
+  name: 'Test volleyball',
+  game_type_id: 2,
+  location_id: 2,
+  date_time: Time.zone.now + 1.week,
+  minimum_number: 8,
+  users: User.all.first(2)
+)

@@ -1,0 +1,19 @@
+<% locals[:events].each do |event| %>
+  <%= klass = event.minimum_number <= event.users.length ? 'game-on' : '' %>
+  <div class="event <%= klass %>">
+    <h2><%= link_to event.name, event_path(event) %>
+      <% game_type = GameType.find(event.game_type_id).name %>
+      <% unless event.name.downcase.include? game_type.downcase %>
+        <span class="small"> (<%= game_type %>)</span>
+      <% end %>
+    </h2>
+    <p>Where: <%= event.location.name %></p>
+    <p>When: <%= event.pretty_date %> @ <%= event.pretty_time %></p>
+
+    <% number_needed = event.minimum_number - event.users.length %>
+    <% humen = number_needed > 1 ? 'people' : 'person' %>
+    <% if number_needed > 0 %>
+    <p><b><%= number_needed %></b> more <%= humen %> needed.</p>
+    <% end %>
+  </div>
+<% end %>

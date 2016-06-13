@@ -1,6 +1,6 @@
-class CreateGameTypes < ActiveRecord::Migration
+class CreateLocations < ActiveRecord::Migration
   def change
-    create_table :game_types do |t|
+    create_table :locations do |t|
       t.string :name
 
       t.timestamps null: false

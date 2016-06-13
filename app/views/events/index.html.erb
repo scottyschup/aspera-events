@@ -1,14 +1,7 @@
-<h1>Events</h1>
+<h1>Upcoming Events</h1>
 <div class="events">
-  <%= button_to "Create New Event", new_event_path, class: "new-button button",
+  <%= button_to "Create New Event", new_event_path, class: "new button",
     method: :get %>
-  <% @events.each do |event| %>
-    <div class="event">
-      <h2><%= event.name %>
-        <span class="small"> <%= event.game_type %></span>
-      </h2>
-      <p class="date"><%= event.date %></p>
-      <p><%= event.minimum_number %></p>
-    </div>
-  <% end %>
+  <%= render partial: 'events/partials/events_list',
+    locals: { events: @events, new_user: @new_user } %>
 </div>

@@ -1,0 +1,8 @@
+<div class="back-link">
+  <%= link_to 'Back to All Categories', game_types_path %>
+</div>
+<div class="events">
+  <h2><%= @game_type.name %></h2>
+  <%= render 'events/partials/events_list',
+    locals: { events: @game_type.events, new_user: @new_user } %>
+</div>

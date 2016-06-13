@@ -1,0 +1,7 @@
+<h2><%= link_to 'Browse All Events', events_path %></h2>
+<h2>Browse by Event Type:</h2>
+<ul>
+  <% @game_types.each do |gt| %>
+    <li class="game-type-link"><%= link_to gt.name, gt %></li>
+  <% end %>
+</ul>

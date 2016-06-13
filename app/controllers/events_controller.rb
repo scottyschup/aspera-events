@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.create(event_params)
     if @event.save!
-      render index
+      redirect_to action: 'game_types/index'
     else
       # flash[:errors] << @event.errors.full_message ?
     end
@@ -19,6 +19,7 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all
+    @new_user = User.new
   end
 
   def new
@@ -26,6 +27,8 @@ class EventsController < ApplicationController
   end
 
   def show
+    @event = Event.find(params[:id])
+    @new_user = User.new
   end
 
   def update
@@ -39,12 +42,14 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params
-      .require(:event)
-      .permit(:id, :name, :date, :time, :game_type_id, :location, :minimum_number)
+    eps = params.require(:event)
+                .permit(:name, :game_type_id, :location, :minimum_number)
+    date_str = params[:event][:date] + params[:event][:time]
+    eps[:date_time] = DateTime.parse(date_str)
+    eps
   end
 
   def set_event
-    @event = Event.find(event_params(:id))
+    @event = Event.find(params[:id])
   end
 end
