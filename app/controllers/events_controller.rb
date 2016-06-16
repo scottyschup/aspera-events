@@ -2,11 +2,11 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:edit, :update, :destroy, :show]
 
   def create
-    @event = Event.create(event_params)
-    if @event.save!
-      redirect_to action: 'game_types/index'
+    @event = Event.new(event_params)
+    if @event.save
+      redirect_to action: :index, controller: :game_types
     else
-      # flash[:errors] << @event.errors.full_message ?
+      render :new
     end
   end
 
@@ -33,7 +33,7 @@ class EventsController < ApplicationController
 
   def update
     if @event.update!(event_params)
-      redirect_to events_index_path
+      redirect_to event_index_path(@event)
     else
       flash[:errors] = 'You fucked up'
     end
@@ -43,9 +43,19 @@ class EventsController < ApplicationController
 
   def event_params
     eps = params.require(:event)
-                .permit(:name, :game_type_id, :location, :minimum_number)
+                .permit(:name, :game_type_id, :location_id, :minimum_number)
+
+    if eps[:location] && !eps[:location].empty?
+      location = Location.create({ name: params[:event][:location] })
+      eps[:location_id] = location.id
+    end
+
     date_str = params[:event][:date] + params[:event][:time]
-    eps[:date_time] = DateTime.parse(date_str)
+    begin
+      eps[:date_time] = DateTime.parse(date_str)
+    rescue
+      puts 'Date Time invalid: ', params[:event][:date], params[:event][:time]
+    end
     eps
   end
 

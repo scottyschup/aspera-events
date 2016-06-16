@@ -1,7 +1,18 @@
-<h2><%= link_to 'Browse All Events', events_path %></h2>
-<h2>Browse by Event Type:</h2>
 <ul>
-  <% @game_types.each do |gt| %>
-    <li class="game-type-link"><%= link_to gt.name, gt %></li>
+  <li class="game-type-link">
+    <%= link_to "All Events (#{Event.count})", events_path %>
+  </li>
+  <% @game_types.sort_by { |el| el.name }.each do |gt| %>
+    <li class="game-type-link">
+      <%= link_to "#{gt.name} (#{gt.events.count})", gt %>
+      <!-- uncomment the following for removal of extraneous event types -->
+      <!-- <%= form_for(gt, html: { method: :delete, class: 'delete' }) do |f| %>
+        <%= f.submit 'X', class: 'danger' %>
+      <% end %> -->
+    </li>
   <% end %>
 </ul>
+<%= form_for(@new_game_type) do |f| %>
+  <%= f.text_field :name %>
+  <%= f.submit 'New Event Type', class: 'submit' %>
+<% end %>

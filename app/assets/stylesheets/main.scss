@@ -1,0 +1,140 @@
+$darkgrey: rgb(100, 100, 100);
+$darkred: rgb(175, 0, 0);
+$grey: rgb(200, 200, 200);
+$lightgrey: rgb(240, 240, 240);
+
+body {
+  background-color: $lightgrey;
+  margin: 0;
+  min-height: 100vh;
+  padding: 0;
+  width: 100%;
+}
+
+a {
+  color: $darkred;
+  text-decoration: none;
+  &:hover {
+    color: $grey;
+  }
+}
+
+form {
+  label {
+    display: block;
+  }
+  input, select {
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 25px;
+    margin: 5px 0;
+    padding: 0 10px;
+    text-align: center;
+    width: 380px;
+  }
+  select {
+    width: 400px;
+  }
+}
+
+h1, h2, h3 {
+  display: inline-block;
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  text-align: center;
+}
+
+li p {
+  display: inline;
+}
+
+.users li {
+  text-align: left;
+  margin-left: 20px;
+}
+
+.game-on {
+  position: absolute;
+  top: 5px;
+  right: 20px;
+}
+
+.header {
+  color: white;
+  background-color: black;
+  margin: 0;
+  padding: 5px 0;
+  text-align: center;
+  width: 100%;
+  a {
+    color: $lightgrey;
+    &:hover {
+      color: $grey;
+    }
+  }
+  h1 {
+    margin: 0 0 20px;
+    text-align: center;
+  }
+  img {
+    margin: 0 5px;
+    position: relative;
+    top: 22px;
+  }
+}
+
+.main {
+  margin: 0 auto;
+  width: 400px;
+  input {
+    display: inline-block;
+  }
+}
+
+.back-link, .cancel {
+  font-weight: bold;
+  margin: 10px;
+  text-align: center;
+}
+
+.delete {
+  display: inline;
+  width: inherit;
+}
+
+.email-input {
+  width: 50%;
+}
+
+.new-button {
+  display: inline;
+  padding: 0 5px;
+  position: absolute;
+  right: -25px;
+  input {
+    display:inline;
+    width: inherit;
+  }
+}
+
+.submit {
+  width: 400px;
+  margin: 0 auto;
+}
+
+.danger {
+  width: inherit;
+  background-color: black;
+  color: white;
+}
+
+.hidden {
+  display: none;
+}
+
+.small {
+  font-size: 60%
+}

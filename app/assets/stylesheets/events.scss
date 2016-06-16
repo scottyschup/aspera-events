@@ -2,12 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-form {
-  label {
-    display: block;
-  }
-  input, select {
-    display: block;
-    margin-left: 20px;
+.events {
+  position: relative;
+}
+
+.event {
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 10px auto;
+  padding: 10px;
+  position: relative;
+  width: 400px;
+  h2 {
+    width: 75%;
   }
 }

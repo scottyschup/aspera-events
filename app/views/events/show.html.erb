@@ -1,33 +1,48 @@
-<%= klass = @event.minimum_number <= @event.users.length ? ' game-on' : '' %>
+<% game_on = @event.minimum_number <= @event.users.length %>
 <div class="back-link">
-  <%= link_to "Back to #{@event.game_type.name}", game_type_path(@event.game_type) %>
+  <%= link_to 'All Categories', game_types_path %> :::
+  <%= link_to "All Events", events_path %> :::
+  <%= link_to "#{@event.game_type.name} Events", game_type_path(@event.game_type) %>
 </div>
-<div class="event<%= klass %>">
+<div class="event">
   <h2><%= @event.name %>
     <% game_type = GameType.find(@event.game_type_id).name %>
     <% unless @event.name.downcase.include? game_type.downcase %>
       <span class="small"> (<%= game_type %>)</span>
     <% end %>
   </h2>
+  <div class="game-on">
+    <% if game_on %>
+      <%= image_tag('game-on.png', size: '100x84') %>
+    <% else %>
+      <% number_needed = @event.minimum_number - @event.users.length %>
+      <% humen = number_needed > 1 ? 'people' : 'person' %>
+      <% if number_needed > 0 %>
+        <p><b><%= number_needed %></b> more <%= humen %> needed.</p>
+      <% end %>
+    <% end %>
+  </div>
   <p>Where: <%= @event.location.name %></p>
   <p>When: <%= @event.pretty_date %> @ <%= @event.pretty_time %></p>
   <p>Who: </p>
-  <ul>
+  <ul class='users'>
     <% @event.users.each do |user| %>
-      <li><%= user.name %></li>
+      <li>
+        <p><%= user.name %></p>
+        <%= button_to(
+          'X', user_path(user), method: :delete,
+          form_class: 'delete', class: 'delete', params: { event_id: @event.id }
+        ) %>
+      </li>
     <% end %>
   </ul>
-  <% number_needed = @event.minimum_number - @event.users.length %>
-  <% humen = number_needed > 1 ? 'people' : 'person' %>
-  <% if number_needed > 0 %>
-  <p><b><%= number_needed %></b> more <%= humen %> needed.</p>
-  <% end %>
   <%= form_for(@new_user) do |f| %>
     <%= f.hidden_field :event_id, value: @event.id %>
     <%= f.label 'Name' %>
     <%= f.text_field :name %>
     <%= f.label 'Email' %>
-    <%= f.text_field :email %>
-    <%= f.submit 'Sign Up!' %>
+    <%= f.text_field :email, class: 'email-input' %>
+    <span>@asperasoft.com</span>
+    <%= f.submit 'Sign Up!', class: 'submit' %>
   <% end %>
 </div>

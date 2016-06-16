@@ -1,7 +1,9 @@
-<h1>Upcoming Events</h1>
+<div class="back-link">
+  <%= link_to 'All Categories', game_types_path %>
+</div>
 <div class="events">
-  <%= button_to "Create New Event", new_event_path, class: "new button",
-    method: :get %>
+  <h1>Upcoming Events</h1>
+  <%= button_to 'Create New Event', new_event_path, form_class: "new-button", method: :get %>
   <%= render partial: 'events/partials/events_list',
-    locals: { events: @events, new_user: @new_user } %>
+    locals: { events: @events } %>
 </div>

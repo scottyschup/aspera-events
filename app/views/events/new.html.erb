@@ -3,20 +3,52 @@
 <%= form_for(@event) do |f| %>
   <%= f.label 'Event name:' %>
   <%= f.text_field :name %>
-  <%= f.label 'Game type:' %>
-  <%= f.collection_select(:game_type_id, GameType.all, :id, :name) %>
+  <%= f.label 'Event type:' %>
+  <%= f.collection_select(
+    :game_type_id, GameType.all.order(:name), :id, :name,
+    include_blank: 'Select an event type'
+  ) %>
   <%= f.label 'Location:' %>
-  <%= f.collection_select(:location_id, Location.all, :id, :name) %>
+  <div id="location-select">
+    <%= f.collection_select(
+      :location_id, Location.all.order(:name), :id, :name,
+      include_blank: 'Select a location'
+    ) %>
+    <%= link_to 'Add new location', '#' %>
+  </div>
+  <div id="location-text" class="hidden">
+    <input name="event[location_text]">
+    <%= link_to 'Select location', '#' %>
+  </div>
   <%= f.label 'Date:' %>
   <input name="event[date]" class="datepicker">
   <%= f.label 'Time:' %>
   <input name="event[time]" class="timepicker">
   <%= f.label 'Minimum number of participants:' %>
   <%= f.text_field :minimum_number %>
-  <%= f.submit 'Enter' %>
+  <%= f.submit 'Enter', class: 'submit' %>
 <% end %>
 
+<div class="cancel">
+  <%= link_to 'Cancel', game_types_path %>
+</div>
+
 <script type="text/javascript">
-  $('.datepicker').pickadate();
-  $('.timepicker').pickatime();
+  $('.datepicker').pickadate({
+    min: true
+  });
+  $('.timepicker').pickatime({
+    interval: 15,
+    min: [6,0],
+    max: [23,45]
+  });
+  $('#location-text a').click(function () {
+    $('#location-text').addClass('hidden');
+    $('#location-select').removeClass('hidden');
+  });
+
+  $('#location-select a').click(function () {
+    $('#location-select').addClass('hidden');
+    $('#location-text').removeClass('hidden');
+  })
 </script>

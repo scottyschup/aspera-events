@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Aspera Signup Site</title>
+  <title>Unofficial Aspera Events</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= render 'layouts/partials/header' %>
-<%= yield %>
+<div class="body">
+  <a href='/'><%= render 'layouts/partials/header' %></a>
+  <div class="main">
+    <%= yield %>
+  </div>
+</div>
 
 </body>
 </html>

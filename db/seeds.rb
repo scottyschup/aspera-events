@@ -51,6 +51,12 @@ User.create([
   }, {
     name: 'Conan',
     email: 'conan'
+  }, {
+    name: 'Bryan',
+    email: 'bbischof'
+  }, {
+    name: 'Peter',
+    email: 'peter'
   }
 ])
 
@@ -59,6 +65,6 @@ Event.create(
   game_type_id: 2,
   location_id: 2,
   date_time: Time.zone.now + 1.week,
-  minimum_number: 8,
-  users: User.all.first(2)
+  minimum_number: 5,
+  users: User.all.first(4)
 )
