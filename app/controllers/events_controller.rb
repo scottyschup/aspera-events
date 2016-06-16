@@ -45,9 +45,14 @@ class EventsController < ApplicationController
     eps = params.require(:event)
                 .permit(:name, :game_type_id, :location_id, :minimum_number)
 
-    if eps[:location] && !eps[:location].empty?
-      location = Location.create({ name: params[:event][:location] })
+    if !params[:event][:location_text].empty?
+      location = Location.create({ name: params[:event][:location_text] })
       eps[:location_id] = location.id
+    end
+
+    if !params[:event][:game_type_text].empty?
+      game_type = GameType.create({ name: params[:event][:game_type_text] })
+      eps[:game_type_id] = game_type.id
     end
 
     date_str = params[:event][:date] + params[:event][:time]

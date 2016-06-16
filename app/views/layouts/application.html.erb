@@ -15,5 +15,38 @@
   </div>
 </div>
 
+<script type="text/javascript">
+  $('.datepicker').pickadate({
+    min: true
+  });
+  $('.timepicker').pickatime({
+    interval: 15,
+    min: [6,0],
+    max: [23,45]
+  });
+
+  $('#location-text a').click(function () {
+    $('#location-text').addClass('hidden');
+    $('#location-select').removeClass('hidden');
+  });
+  $('#location-select a').click(function () {
+    $('#location-select').addClass('hidden');
+    $('#location-text').removeClass('hidden');
+  });
+
+  $('#event-type-text a').click(function () {
+    $('#event-type-text').addClass('hidden');
+    $('#event-type-select').removeClass('hidden');
+  });
+  $('#event-type-select a').click(function () {
+    $('#event-type-select').addClass('hidden');
+    $('#event-type-text').removeClass('hidden');
+  });
+
+  $('#create-event-type').click(function () {
+    $('#new-event').removeClass('hidden');
+    $('#create-event-type').addClass('hidden');
+  })
+</script>
 </body>
 </html>

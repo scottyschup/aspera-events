@@ -12,7 +12,10 @@
     </li>
   <% end %>
 </ul>
-<%= form_for(@new_game_type) do |f| %>
-  <%= f.text_field :name %>
+<div id="create-event-type">
+  <input type="button" value="Create a New Event Type">
+</div>
+<%= form_for(@new_game_type, html: { id: 'new-event', class: 'hidden' }) do |f| %>
+  <%= f.text_field :name, placeholder: 'Event type name' %>
   <%= f.submit 'New Event Type', class: 'submit' %>
 <% end %>

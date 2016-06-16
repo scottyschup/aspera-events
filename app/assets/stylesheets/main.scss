@@ -4,6 +4,7 @@ $grey: rgb(200, 200, 200);
 $lightgrey: rgb(240, 240, 240);
 
 body {
+  font-family: 'Helvetica neue', sans-serif;
   background-color: $lightgrey;
   margin: 0;
   min-height: 100vh;
@@ -19,22 +20,20 @@ a {
   }
 }
 
-form {
-  label {
-    display: block;
-  }
-  input, select {
-    border: 1px solid black;
-    border-radius: 5px;
-    height: 25px;
-    margin: 5px 0;
-    padding: 0 10px;
-    text-align: center;
-    width: 380px;
-  }
-  select {
-    width: 400px;
-  }
+label {
+  display: block;
+}
+input, select {
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 25px;
+  margin: 5px 0;
+  padding: 0 10px;
+  text-align: center;
+  width: 380px;
+}
+select {
+  width: 400px;
 }
 
 h1, h2, h3 {
@@ -44,6 +43,7 @@ h1, h2, h3 {
 
 ul {
   list-style: none;
+  padding: 0;
   text-align: center;
 }
 
@@ -59,7 +59,7 @@ li p {
 .game-on {
   position: absolute;
   top: 5px;
-  right: 20px;
+  right: 10px;
 }
 
 .header {
