@@ -4,6 +4,5 @@
 <div class="events">
   <h1>Upcoming Events</h1>
   <%= button_to 'Create New Event', new_event_path, form_class: "new-button", method: :get %>
-  <%= render partial: 'events/partials/events_list',
-    locals: { events: @events } %>
+  <%= render 'events/partials/events_list' %>
 </div>

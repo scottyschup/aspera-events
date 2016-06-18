@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Location.create([
+locations = Location.create([
   {
     name: 'Aspera Game Room'
   }, {
@@ -24,7 +24,7 @@ Location.create([
   }
 ])
 
-GameType.create([
+game_types = GameType.create([
   {
     name: 'Ping Pong'
   }, {
@@ -44,7 +44,7 @@ GameType.create([
   }
 ])
 
-User.create([
+users = User.create([
   {
     name: 'Scott',
     email: 'sschupbach'
@@ -60,11 +60,14 @@ User.create([
   }
 ])
 
-Event.create(
-  name: 'Test volleyball',
-  game_type_id: 2,
-  location_id: 2,
-  date_time: Time.zone.now + 1.week,
-  minimum_number: 5,
-  users: User.all.first(4)
-)
+
+game_types.each do |gt|
+  Event.create(
+    name: "Sample #{gt}",
+    game_type_id: gt.id,
+    location_id: locations.sample.id,
+    date_time: Time.zone.now + rand(7).days - rand(6).hours,
+    minimum_number: rand(10) + 1,
+    users: users.sample(rand(4) + 1)
+  )
+end
