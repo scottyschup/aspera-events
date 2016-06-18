@@ -55,12 +55,13 @@ class EventsController < ApplicationController
       eps[:game_type_id] = game_type.id
     end
 
-    date_str = params[:event][:date] + params[:event][:time]
     begin
-      eps[:date_time] = DateTime.parse(date_str)
+      date_str = params[:event][:date] + params[:event][:time]
+      eps[:date_time] = Event.utc_str_to_local_time(date_str)
     rescue
       puts 'Date Time invalid: ', params[:event][:date], params[:event][:time]
     end
+
     eps
   end
 
