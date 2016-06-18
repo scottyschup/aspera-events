@@ -7,7 +7,7 @@ class Event < ActiveRecord::Base
 
   def self.utc_str_to_local_time(str)
     time = DateTime.parse(str).to_time
-    offset = Time.now.utc_offset.seconds
+    offset = Time.zone.now.utc_offset.seconds
     time -= offset
   end
 
