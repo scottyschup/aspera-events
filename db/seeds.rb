@@ -63,7 +63,7 @@ users = User.create([
 
 game_types.each do |gt|
   Event.create(
-    name: "Sample #{gt}",
+    name: "Sample #{gt.name}",
     game_type_id: gt.id,
     location_id: locations.sample.id,
     date_time: Time.zone.now + rand(7).days - rand(6).hours,
