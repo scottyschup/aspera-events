@@ -65,10 +65,16 @@ li p {
 .header {
   color: white;
   background-color: black;
+  height: 80px;
+  left: 0;
   margin: 0;
   padding: 5px 0;
+  position: fixed;
   text-align: center;
+  top:  0;
   width: 100%;
+  z-index: 10;
+
   a {
     color: $lightgrey;
     &:hover {
@@ -88,7 +94,10 @@ li p {
 
 .main {
   margin: 0 auto;
+  position: relative;
+  top: 90px;
   width: 400px;
+
   input {
     display: inline-block;
   }
