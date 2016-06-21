@@ -1,9 +1,0 @@
-<div class="back-link">
-  <%= link_to 'All Categories', game_types_path %>
-</div>
-<div class="events">
-  <h2><%= @game_type.name %> Events</h2>
-  <%= button_to 'Create New Event', new_event_path, form_class: "new-button", method: :get %>
-  <%= render partial: 'events/partials/events_list',
-    locals: { events: @game_type.events } %>
-</div>

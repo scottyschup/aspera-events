@@ -2,13 +2,14 @@ class GameTypesController < ApplicationController
   before_action :set_game_type, only: [:destroy, :show]
 
   def create
-    @game_type = GameType.create(game_type_params)
-    redirect_to action: :index
+    @game_type = GameType.new(game_type_params)
+    flash[:error] = @game_type.errors.full_messages unless @game_type.save
+    redirect_to controller: :events, action: :index
   end
 
   def destroy
     @game_type.destroy
-    redirect_to action: :index
+    redirect_to controller: :events, action: :index
   end
 
   def index

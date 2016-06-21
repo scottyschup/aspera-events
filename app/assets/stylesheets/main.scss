@@ -1,15 +1,19 @@
 $darkgrey: rgb(100, 100, 100);
 $darkred: rgb(175, 0, 0);
 $grey: rgb(200, 200, 200);
-$lightgrey: rgb(240, 240, 240);
+$lightgrey: rgb(220, 220, 220);
+$bkgd-color: $lightgrey;
 
+
+// general
 body {
   font-family: 'Helvetica neue', sans-serif;
-  background-color: $lightgrey;
+  background-color: $bkgd-color;
   margin: 0;
   min-height: 100vh;
+  min-width: 700px;
   padding: 0;
-  width: 100%;
+  width: 100vw;
 }
 
 a {
@@ -28,9 +32,9 @@ input, select {
   border-radius: 5px;
   height: 25px;
   margin: 5px 0;
-  padding: 0 10px;
+  padding: 0;
   text-align: center;
-  width: 380px;
+  width: 100%;
 }
 select {
   width: 400px;
@@ -56,25 +60,17 @@ li p {
   margin-left: 20px;
 }
 
-.game-on {
-  position: absolute;
-  top: 5px;
-  right: 10px;
-}
-
+// layout
 .header {
   color: white;
   background-color: black;
   height: 80px;
-  left: 0;
   margin: 0;
   padding: 5px 0;
   position: fixed;
   text-align: center;
-  top:  0;
   width: 100%;
   z-index: 10;
-
   a {
     color: $lightgrey;
     &:hover {
@@ -93,17 +89,27 @@ li p {
 }
 
 .main {
-  margin: 0 auto;
-  position: relative;
+  left: 220px;
+  min-width: 600px;
+  position: absolute;
   top: 90px;
-  width: 400px;
-
+  width: calc(100vw - 220px);
   input {
     display: inline-block;
   }
 }
 
-.back-link, .cancel {
+.nav-sidebar {
+  background-color: $bkgd-color;
+  left: 10px;
+  position: fixed;
+  top: 90px;
+  width: 200px;
+  z-index: 10;
+}
+
+// buttons, inputs, and links
+.cancel {
   font-weight: bold;
   margin: 10px;
   text-align: center;
@@ -112,6 +118,7 @@ li p {
 .delete {
   display: inline;
   width: inherit;
+  padding: 0 10px;
 }
 
 .email-input {
@@ -122,9 +129,8 @@ li p {
   display: inline;
   padding: 0 5px;
   position: absolute;
-  right: -25px;
   input {
-    display:inline;
+    display: inline;
     width: inherit;
   }
 }
@@ -140,6 +146,7 @@ li p {
   color: white;
 }
 
+// general formatting
 .hidden {
   display: none;
 }

@@ -1,9 +1,5 @@
 <% game_on = @event.minimum_number <= @event.users.length %>
-<div class="back-link">
-  <%= link_to 'All Categories', game_types_path %> :::
-  <%= link_to "All Events", events_path %> :::
-  <%= link_to "#{@event.game_type.name} Events", game_type_path(@event.game_type) %>
-</div>
+
 <div class="event">
   <h2><%= @event.name %>
     <% game_type = GameType.find(@event.game_type_id).name %>
@@ -11,36 +7,38 @@
       <span class="small"> (<%= game_type %>)</span>
     <% end %>
   </h2>
+
   <div class="game-on">
     <% if game_on %>
       <%= image_tag('game-on.png', size: '100x84') %>
     <% else %>
       <% number_needed = @event.minimum_number - @event.users.length %>
-      <% humen = number_needed > 1 ? 'people' : 'person' %>
-      <% if number_needed > 0 %>
-        <p><b><%= number_needed %></b> more <%= humen %> needed.</p>
-      <% end %>
+      <p><b><%= pluralize(number_needed, 'person') %></b> still needed!</p>
     <% end %>
   </div>
+
   <p>Where: <%= @event.location.name %></p>
   <p>When: <%= @event.pretty_date %> @ <%= @event.pretty_time %></p>
-  <p>Who: </p>
-  <ul class='users'>
-    <% @event.users.each do |user| %>
-      <li>
-        <p><%= user.name %></p>
-        <%= button_to(
-          'X', user_path(user), method: :delete,
-          form_class: 'delete', class: 'delete', params: { event_id: @event.id }
-        ) %>
-      </li>
-    <% end %>
-  </ul>
+  <% if @event.users.count > 0 %>
+    <p>Who: </p>
+    <ul class='users'>
+      <% @event.users.each do |user| %>
+        <li>
+          <%= user.name %>
+          <%= button_to(
+            'X', user_path(user), method: :delete,
+            form_class: 'delete', class: 'delete', params: { event_id: @event.id }
+          ) %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+  <h3>Join the fun!</h3>
   <%= form_for(@new_user) do |f| %>
     <%= f.hidden_field :event_id, value: @event.id %>
-    <%= f.label 'Name' %>
+    <%= f.label 'Your Name' %>
     <%= f.text_field :name %>
-    <%= f.label 'Email' %>
+    <%= f.label 'Gmail handle' %>
     <%= f.text_field :email, class: 'email-input' %>
     <span>@asperasoft.com</span>
     <%= f.submit 'Sign Up!', class: 'submit' %>

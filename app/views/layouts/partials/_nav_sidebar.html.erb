@@ -1,4 +1,22 @@
-
+<ul>
+  <li class="game-type-link">
+    <%= link_to "All Events (#{Event.count})", events_path %>
+  </li>
+  <% @game_types.sort_by { |el| el.name }.each do |gt| %>
+    <li class="game-type-link">
+      <%= link_to(
+        "#{gt.name} (#{gt.events.count})", events_path(game_type: gt.id)
+      ) %>
+    </li>
+  <% end %>
+</ul>
+<div id="create-event-type">
+  <input type="new-button button" value="Create a New Event Type">
+</div>
+<%= form_for(@new_game_type, html: { id: 'new-event', class: 'hidden' }) do |f| %>
+  <%= f.text_field :name, placeholder: 'Event type name' %>
+  <%= f.submit 'New Event Type', class: 'submit' %>
+<% end %>
 
 <script type="text/javascript">
   $('#create-event-type').click(function () {

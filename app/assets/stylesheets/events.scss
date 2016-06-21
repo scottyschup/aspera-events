@@ -3,17 +3,26 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .events {
+  margin: 0 10px;
   position: relative;
+  width: 70%;
 }
 
 .event {
+  background-color: white;
   border: 1px solid black;
   border-radius: 10px;
-  margin: 10px auto;
+  margin: 10px 0;
   padding: 10px;
   position: relative;
-  width: 400px;
+  width: calc(100% - 40px);
   h2 {
     width: 65%;
   }
+}
+
+.game-on {
+  position: absolute;
+  top: 5px;
+  right: 10px;
 }

@@ -1,11 +1,14 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:edit, :update, :destroy, :show]
+  before_action :set_game_types, except: [:destroy]
 
   def create
     @event = Event.new(event_params)
     if @event.save
-      redirect_to action: :index, controller: :game_types
+      flash[:notice] = ["Successsss!"]
+      redirect_to action: :index
     else
+      flash[:error] = @event.errors.full_messages
       render :new
     end
   end
@@ -19,7 +22,6 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all
-    @new_user = User.new
   end
 
   def new
@@ -32,10 +34,10 @@ class EventsController < ApplicationController
   end
 
   def update
-    if @event.update!(event_params)
+    if @event.update(event_params)
       redirect_to event_index_path(@event)
     else
-      flash[:errors] = 'You fucked up'
+      flash[:error] = @event.errors.full_messages
     end
   end
 
@@ -67,5 +69,10 @@ class EventsController < ApplicationController
 
   def set_event
     @event = Event.find(params[:id])
+  end
+
+  def set_game_types
+    @game_types = GameType.all
+    @new_game_type = GameType.new
   end
 end
