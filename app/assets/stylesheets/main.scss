@@ -105,12 +105,11 @@ li  {
 .main {
   height: calc(100% - 90px);
   left: 210px;
-  max-width: 550px;
-  min-width: 450px;
   overflow: scroll;
   position: fixed;
   right: 0;
   top: 90px;
+  width: 100%;
   input {
     display: inline-block;
   }
@@ -191,3 +190,14 @@ label {
 //   width: 100%;
 // }
 //
+
+div.picker__box {
+  width: calc(92.5% - 220px);
+  left: 215px;
+  position: relative;
+}
+
+.picker--time .picker__box {
+  width: 50%;
+  left: 185px;
+}
