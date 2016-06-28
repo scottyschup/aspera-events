@@ -7,9 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<div class="body">
-  <a href='/'><%= render 'layouts/partials/header' %></a>
+  <%= render 'layouts/partials/header' %>
   <div class="nav-sidebar">
     <%= render 'layouts/partials/nav_sidebar' %>
   </div>
@@ -17,7 +15,5 @@
     <%= render 'layouts/partials/errors' %>
     <%= yield %>
   </div>
-</div>
-
 </body>
 </html>

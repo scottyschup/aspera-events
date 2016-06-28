@@ -1,33 +1,39 @@
 <div class="events">
-  <h1>Upcoming Events</h1>
-  <%= button_to 'Create New Event', new_event_path, form_class: "new-button", method: :get %>
-  <% @events.each do |event| %>
+  <header class="clear-fix">
+    <h1>Upcoming Events</h1>
+    <div class="new-event">
+      <%= button_to(
+        'Create New Event',
+        new_event_path,
+        class: "new-button",
+        form_class: "inline",
+        method: :get
+      )%>
+    </div>
+  </header>
+  <section class="clear-fix">
+    <% @events.each do |event| %>
     <% game_on = event.minimum_number <= event.users.length %>
     <div class="event">
       <h2><%= link_to "#{event.name}", event_path(event) %>
         <% game_type = event.game_type.name %>
         <% unless event.name.downcase.include? game_type.downcase %>
-          <span class="small"> (<%= game_type %>)</span>
+        <span class="small"> (<%= game_type %>)</span>
         <% end %>
       </h2>
 
       <div class="game-on">
         <% if game_on %>
-          <%= image_tag('game-on.png', size: '100x84') %>
+        <%= image_tag('game-on.png', size: '100x84') %>
         <% else %>
-          <% number_needed = event.minimum_number - event.users.length %>
-          <p><b><%= pluralize(number_needed, 'person') %></b> still needed!</p>
+        <% number_needed = event.minimum_number - event.users.length %>
+        <p><b><%= pluralize(number_needed, 'person') %></b> still needed!</p>
         <% end %>
       </div>
 
       <p>Where: <%= event.location.name %></p>
       <p>When: <%= event.pretty_date %> @ <%= event.pretty_time %></p>
-
-      <% number_needed = event.minimum_number - event.users.length %>
-      <% humen = number_needed > 1 ? 'people' : 'person' %>
-      <% if number_needed > 0 %>
-      <p><b><%= number_needed %></b> more <%= humen %> needed.</p>
-      <% end %>
     </div>
-  <% end %>
+    <% end %>
+  </section>
 </div>

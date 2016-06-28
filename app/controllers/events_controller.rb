@@ -21,7 +21,11 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = Event.all
+    if params[:game_type]
+      @events = Event.where(game_type_id: params[:game_type])
+    else
+      @events = Event.all
+    end
   end
 
   def new

@@ -6,12 +6,19 @@ $bkgd-color: $lightgrey;
 
 
 // general
+.clear-fix:after {
+  clear: both;
+  content: '';
+  display: block;
+  visibility: hidden;
+}
+
 body {
   font-family: 'Helvetica neue', sans-serif;
   background-color: $bkgd-color;
   margin: 0;
   min-height: 100vh;
-  min-width: 700px;
+  min-width: 825px;
   padding: 0;
   width: 100vw;
 }
@@ -24,20 +31,8 @@ a {
   }
 }
 
-label {
-  display: block;
-}
-input, select {
-  border: 1px solid black;
-  border-radius: 5px;
-  height: 25px;
-  margin: 5px 0;
-  padding: 0;
-  text-align: center;
-  width: 100%;
-}
-select {
-  width: 400px;
+header * {
+  float: left;
 }
 
 h1, h2, h3 {
@@ -51,8 +46,27 @@ ul {
   text-align: center;
 }
 
-li p {
-  display: inline;
+ol {
+  padding-left: 10px;
+}
+
+li  {
+  margin: 5px 0;
+  p {
+    display: inline;
+  }
+}
+
+.errors li {
+  text-align: left;
+}
+
+.hidden {
+  display: none;
+}
+
+.small {
+  font-size: 60%
 }
 
 .users li {
@@ -60,12 +74,12 @@ li p {
   margin-left: 20px;
 }
 
-// layout
 .header {
   color: white;
   background-color: black;
   height: 80px;
   margin: 0;
+  min-width: inherit;
   padding: 5px 0;
   position: fixed;
   text-align: center;
@@ -77,10 +91,6 @@ li p {
       color: $grey;
     }
   }
-  h1 {
-    margin: 0 0 20px;
-    text-align: center;
-  }
   img {
     margin: 0 5px;
     position: relative;
@@ -88,12 +98,19 @@ li p {
   }
 }
 
+.inline {
+  display: inline;
+}
+
 .main {
-  left: 220px;
-  min-width: 600px;
-  position: absolute;
+  height: calc(100% - 90px);
+  left: 210px;
+  max-width: 550px;
+  min-width: 450px;
+  overflow: scroll;
+  position: fixed;
+  right: 0;
   top: 90px;
-  width: calc(100vw - 220px);
   input {
     display: inline-block;
   }
@@ -101,56 +118,76 @@ li p {
 
 .nav-sidebar {
   background-color: $bkgd-color;
-  left: 10px;
+  height: 100vh;
+  left: 0;
+  padding: 90px 5px 0;
   position: fixed;
-  top: 90px;
+  top: 0;
   width: 200px;
-  z-index: 10;
+  z-index: 5;
 }
 
-// buttons, inputs, and links
-.cancel {
-  font-weight: bold;
-  margin: 10px;
-  text-align: center;
+input.delete {
+  background-color: rgb(200, 0, 0);
+  color: white;
+  width: 25px;
+  padding: 0 5px;
 }
-
-.delete {
-  display: inline;
-  width: inherit;
-  padding: 0 10px;
-}
-
-.email-input {
-  width: 50%;
-}
+// // buttons, inputs, and links
+// .cancel {
+//   font-weight: bold;
+//   margin: 10px;
+//   text-align: center;
+// }
+//
+//
+// .email-input {
+//   width: 50%;
+// }
+//
 
 .new-button {
-  display: inline;
-  padding: 0 5px;
-  position: absolute;
-  input {
-    display: inline;
-    width: inherit;
-  }
-}
-
-.submit {
-  width: 400px;
-  margin: 0 auto;
-}
-
-.danger {
-  width: inherit;
   background-color: black;
   color: white;
+  left: 20px;
+  padding: 5px 10px;
+  position: relative;
+  top: 10px;
+  width: inherit;
 }
+//
+// .submit {
+//   width: 400px;
+// }
+//
+// .danger {
+//   width: inherit;
+//   background-color: black;
+//   color: white;
+// }
+//
 
-// general formatting
-.hidden {
-  display: none;
-}
+// form {
+//   display: inline;
+//   width: 100%;
+// }
+// input, select {
+//   background-color: white;
+//   border: 1px solid black;
+//   border-radius: 5px;
+//   height: 25px;
+//   margin: 5px 10px;
+//   max-width: 358.4px; // because inputs have border 0.8, padding 15 on the sides
+//   padding: 5px 15px;
+//   width: calc(100% - 51.6px);
+// }
 
-.small {
-  font-size: 60%
+label {
+  display: block;
 }
+//
+// select, .button, .cancel {
+//   max-width: 400px;
+//   width: 100%;
+// }
+//

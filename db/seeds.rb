@@ -25,49 +25,20 @@ locations = Location.create([
 ])
 
 game_types = GameType.create([
-  {
-    name: 'Ping Pong'
-  }, {
-    name: 'Volleyball'
-  },{
-    name: 'Soccer'
-  }, {
-    name: 'Basketball'
-  }, {
-    name: 'Walking'
-  }, {
-    name: 'Running'
-  }, {
-    name: 'Biking'
-  }, {
-    name: 'Happy Hour'
-  }
+  { name: 'Basketball' },
+  { name: 'Biking' },
+  { name: 'Happy Hour' },
+  { name: 'Lawn Games' },
+  { name: 'Ping Pong' },
+  { name: 'Running' },
+  { name: 'Soccer' },
+  { name: 'Volleyball' },
+  { name: 'Walking' }
 ])
 
 users = User.create([
   {
-    name: 'Scott',
+    name: 'Scott S.',
     email: 'sschupbach'
-  }, {
-    name: 'Conan',
-    email: 'conan'
-  }, {
-    name: 'Bryan',
-    email: 'bbischof'
-  }, {
-    name: 'Peter',
-    email: 'peter'
   }
 ])
-
-
-game_types.each do |gt|
-  Event.create(
-    name: "Sample #{gt.name}",
-    game_type_id: gt.id,
-    location_id: locations.sample.id,
-    date_time: Time.zone.now + rand(7).days - rand(6).hours,
-    minimum_number: rand(10) + 1,
-    users: users.sample(rand(4) + 1)
-  )
-end

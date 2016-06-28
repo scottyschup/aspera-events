@@ -1,11 +1,12 @@
-// Place all the styles related to the events controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
+// // Place all the styles related to the events controller here.
+// // They will automatically be included in application.css.
+// // You can use Sass (SCSS) here: http://sass-lang.com/
+//
 .events {
-  margin: 0 10px;
+  height: 100%;
+  margin: 10px 0;
   position: relative;
-  width: 70%;
+  width: 96%;
 }
 
 .event {
@@ -15,9 +16,9 @@
   margin: 10px 0;
   padding: 10px;
   position: relative;
-  width: calc(100% - 40px);
+  width: 96%;
   h2 {
-    width: 65%;
+    width: 60%;
   }
 }
 
@@ -25,4 +26,7 @@
   position: absolute;
   top: 5px;
   right: 10px;
+  p {
+    margin: 10px 0;
+  }
 }
