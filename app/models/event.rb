@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: events
+#
+#  id             :integer          not null, primary key
+#  name           :string           not null
+#  date_time      :datetime         not null
+#  minimum_number :integer          default(1), not null
+#  location_id    :integer          not null
+#  game_type_id   :integer          not null
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
+
 class Event < ActiveRecord::Base
   validates_presence_of :name, :game_type_id, :location_id, :minimum_number
 
