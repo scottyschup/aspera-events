@@ -116,7 +116,6 @@ li  {
 }
 
 .nav-sidebar {
-  background-color: $bkgd-color;
   height: 100vh;
   left: 0;
   padding: 90px 5px 0;
@@ -145,14 +144,13 @@ input.delete {
 // }
 //
 
-.new-button {
+.new-button, input[type="submit"] {
   background-color: black;
   color: white;
-  left: 20px;
+  display: block;
   padding: 5px 10px;
   position: relative;
-  top: 10px;
-  width: inherit;
+  top: 5px;
 }
 //
 // .submit {
@@ -166,20 +164,25 @@ input.delete {
 // }
 //
 
-// form {
-//   display: inline;
-//   width: 100%;
-// }
-// input, select {
+form:not(#new-event) {
+  width: inherit;
+  margin-left: 20px;
+}
+input, select {
 //   background-color: white;
-//   border: 1px solid black;
-//   border-radius: 5px;
+  border: 1px solid black;
+  border-radius: 5px;
 //   height: 25px;
-//   margin: 5px 10px;
+  margin-bottom: 5px;
 //   max-width: 358.4px; // because inputs have border 0.8, padding 15 on the sides
-//   padding: 5px 15px;
+  min-width: 200px;
+  padding: 5px;
 //   width: calc(100% - 51.6px);
-// }
+}
+
+input[type="text"], input.datepicker, input.timepicker {
+  min-width: 186.8px;
+}
 
 label {
   display: block;
