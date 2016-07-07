@@ -21,10 +21,12 @@ class EventsController < ApplicationController
   end
 
   def index
+    beginning_of_today = Time.now.beginning_of_day
+    @events = Event.where('date_time >= ?', beginning_of_today)
+    @past_events = Event.where('date_time < ?', beginning_of_today)
     if params[:game_type]
-      @events = Event.where(game_type_id: params[:game_type])
-    else
-      @events = Event.all
+      @events = @events.where(game_type_id: params[:game_type])
+      @past_events = @past_events.where(game_type_id: params[:game_type])
     end
   end
 

@@ -41,9 +41,7 @@
   <%= f.submit 'Enter', class: 'submit button' %>
 <% end %>
 
-<div class="cancel">
-  <%= link_to 'Cancel', game_types_path %>
-</div>
+<%= button_to 'Cancel', events_path, method: :get %>
 
 <script type="text/javascript">
   $('.datepicker').pickadate({
