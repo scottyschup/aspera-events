@@ -2,10 +2,16 @@ class UsersController < ApplicationController
   before_action :set_user
 
   def create
-    @event = Event.find(params[:user][:event_id])
-    @user.events << @event
-    @user.save
-    redirect_to action: :show, controller: :events, id: @event.id
+    if @user.update(user_params)
+      @event = Event.find(params[:user][:event_id])
+      @user.events << @event unless @user.events.include?(@event)
+      @user.save
+      flash[:notice] = ["Successsss!"]
+      redirect_to action: :show, controller: :events, id: @event.id
+    else
+      flash[:error] = @user.errors.full_messages
+      render :new
+    end
   end
 
   def destroy
@@ -19,8 +25,7 @@ class UsersController < ApplicationController
     if params[:id]
       @user = User.find(params[:id])
     else
-      @user = User.where(email: user_params[:email])
-        .first_or_initialize(user_params)
+      @user = User.where(email: user_params[:email]).first || User.new
     end
   end
 
