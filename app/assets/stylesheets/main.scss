@@ -106,7 +106,7 @@ li  {
 .main {
   height: calc(100% - 90px);
   left: 210px;
-  overflow: scroll;
+  padding-left: 20px;
   position: fixed;
   right: 0;
   top: 90px;
@@ -165,20 +165,12 @@ input[type="submit"].delete {
 // }
 //
 
-form:not(#new-event) {
-  width: inherit;
-  margin-left: 20px;
-}
 input, select {
-//   background-color: white;
   border: 1px solid $black;
   border-radius: 5px;
-//   height: 25px;
   margin-bottom: 5px;
-//   max-width: 358.4px; // because inputs have border 0.8, padding 15 on the sides
   min-width: 200px;
   padding: 5px;
-//   width: calc(100% - 51.6px);
 }
 
 input[type="text"], input.datepicker, input.timepicker {
