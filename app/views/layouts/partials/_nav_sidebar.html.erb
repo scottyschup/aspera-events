@@ -1,9 +1,13 @@
+<%= @game_type_id = 0 if @game_type_id.nil? %>
 <ul>
-  <li class="game-type-link">
+  <li class="game-type-link<%= select_id == 0 ? ' selected' : '' %>">
     <%= link_to "All Events (#{Event.count})", events_path %>
   </li>
+</ul>
+<hr>
+<ul>
   <% @game_types.sort_by { |el| el.name }.each do |gt| %>
-    <li class="game-type-link">
+    <li class="game-type-link<%= select_id == gt.id ? ' selected' : '' %>">
       <%= link_to(
         "#{gt.name} (#{gt.events.count})", events_path(game_type: gt.id)
       ) %>
