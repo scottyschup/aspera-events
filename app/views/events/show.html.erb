@@ -22,7 +22,7 @@
     <% if @event.users.count > 0 %>
     <p>Who: </p>
     <ol class='users'>
-      <% @event.users.each do |user| %>
+      <% @event.users.order(:name).each do |user| %>
       <li>
         <%= user.name %>
         <%= button_to(
