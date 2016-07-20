@@ -1,4 +1,4 @@
-<% @game_type_id = 0 if @game_type_id.nil? %>
+<% select_id = 0 if @game_type_id.nil? %>
 <ul>
   <li class="game-type-link<%= select_id == 0 ? ' selected' : '' %>">
     <%= link_to "All Events (#{Event.count})", events_path %>
