@@ -56,7 +56,7 @@ li  {
   p {
     display: inline;
   }
-  .selected {
+  &.selected {
     font-weight: bold;
   }
 }
