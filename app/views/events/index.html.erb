@@ -20,8 +20,10 @@
       <div class="event">
         <h2><%= link_to "#{event.name}", event_path(event) %>
           <% game_type = event.game_type.name %>
-          <% unless event.name.downcase.include? game_type.downcase %>
-          <span class="small"> (<%= game_type %>)</span>
+          <% unless event.name.downcase.include?(game_type.downcase) ||
+            (defined?(@game_type_id) && @game_type_id > 0) %>
+            <br>
+            <span class="small"> (<%= game_type %>)</span>
           <% end %>
         </h2>
 
@@ -56,8 +58,9 @@
     <div class="event">
       <h2><%= link_to "#{event.name}", event_path(event) %>
         <% game_type = event.game_type.name %>
-        <% unless event.name.downcase.include? game_type.downcase %>
-        <span class="small"> (<%= game_type %>)</span>
+        <% unless event.name.downcase.include?(game_type.downcase) ||
+          (defined?(@game_type_id) && @game_type_id > 0) %>
+          <span class="small"> (<%= game_type %>)</span>
         <% end %>
       </h2>
       <p>Where: <%= event.location.name %></p>

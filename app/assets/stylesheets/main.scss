@@ -86,7 +86,9 @@ input[type="submit"].delete {
 }
 
 .small {
-  font-size: 60%
+  font-size: 50%;
+  position: relative;
+  top: -10px;
 }
 
 .users li {

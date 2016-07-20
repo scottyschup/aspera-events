@@ -2,10 +2,13 @@
 <%= button_to 'Cancel', events_path, method: :get, class: :cancel %>
 <div class="new-event-form">
   <%= form_for(@event) do |f| %>
-    <%= f.label 'Event name:' %>
-    <%= f.text_field :name, placeholder: 'Event name or short description' %>
+    <%= f.label 'Event name' %>
+    <%= f.text_field :name, placeholder: 'Give the event a name' %>
+    <%= f.label 'Event Details (optional)' %>
+    <%= f.text_area :description, message: "A short description", size: "30x5" %>
 
-    <%= f.label 'Event type:' %>
+
+    <%= f.label 'Event type' %>
     <div id="event-type-select">
       <%= f.collection_select(
         :game_type_id, GameType.all.order(:name), :id, :name,
@@ -19,7 +22,7 @@
     </div>
     <br>
 
-    <%= f.label "Location: " %>
+    <%= f.label 'Location' %>
     <div id="location-select">
       <%= f.collection_select(
         :location_id, Location.all.order(:name), :id, :name,
@@ -33,11 +36,11 @@
     </div>
     <br>
 
-    <%= f.label 'Date:' %>
+    <%= f.label 'Date' %>
     <input name="event[date]" class="datepicker" placeholder="Pick a date">
-    <%= f.label 'Time:' %>
+    <%= f.label 'Time' %>
     <input name="event[time]" class="timepicker" placeholder="Pick a time">
-    <%= f.label 'Minimum number of participants:' %>
+    <%= f.label 'Minimum number of participants' %>
     <%= f.text_field :minimum_number %>
     <%= f.submit 'Enter', class: 'submit button' %>
   <% end %>
