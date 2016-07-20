@@ -26,8 +26,9 @@
       <li>
         <%= user.name %>
         <%= button_to(
-        'X', user_path(user), method: :delete,
-        form_class: 'inline', class: 'delete', params: { event_id: @event.id }
+          'X', user_path(user), method: :delete,
+          form_class: 'inline', class: 'delete',
+          params: { 'user[event_id]': @event.id }
         ) %>
       </li>
       <% end %>

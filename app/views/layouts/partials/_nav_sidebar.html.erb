@@ -3,6 +3,14 @@
   <li class="game-type-link<%= @game_type_id == 0 ? ' selected' : '' %>">
     <%= link_to "All Events (#{Event.count})", events_path %>
   </li>
+  <li class="new-event">
+    <%= button_to(
+      'Add an event',
+      new_event_path,
+      form_class: "inline",
+      method: :get
+    )%>
+  </li>
 </ul>
 <hr>
 <ul>
@@ -15,7 +23,7 @@
   <% end %>
 </ul>
 <div id="create-event-type">
-  <input class="new-button button" type="button" value="Create a New Event Type">
+  <input class="new-button button" type="button" value="Add New Event Type">
 </div>
 <%= form_for(@new_game_type, html: { id: 'new-event', class: 'hidden' }) do |f| %>
   <%= f.text_field :name, placeholder: 'Event type name' %>

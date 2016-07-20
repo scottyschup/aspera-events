@@ -4,11 +4,12 @@
   </header>
   <section class="clear-fix">
     <% if @events.length < 1 %>
-      <p>No upcoming events :( You should create one!</p>
+      <p>No upcoming events :( </p>
+      <p>You should create one!</p>
     <% end %>
       <div class="new-event">
         <%= button_to(
-          'Create New Event',
+          'Add an event',
           new_event_path,
           form_class: "inline",
           method: :get
@@ -35,6 +36,12 @@
 
         <p>Where: <%= event.location.name %></p>
         <p>When: <%= event.pretty_date %> @ <%= event.pretty_time %></p>
+        <%= button_to(
+          "Join the fun!",
+          event_path(event),
+          method: :get,
+          class: :join
+        )%>
       </div>
     <% end %>
   </section>
@@ -42,6 +49,9 @@
     <h1>Past Events</h1>
   </header>
   <section class="clear-fix">
+    <% if @past_events.length < 1 %>
+      <p>No past events.</p>
+    <% end %>
     <% @past_events.each do |event| %>
     <div class="event">
       <h2><%= link_to "#{event.name}", event_path(event) %>

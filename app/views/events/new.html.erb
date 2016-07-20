@@ -1,47 +1,47 @@
-<h2>Create a new event:</h2>
+<h1>Create a new event:</h1>
+<%= button_to 'Cancel', events_path, method: :get, class: :cancel %>
+<div class="new-event-form">
+  <%= form_for(@event) do |f| %>
+    <%= f.label 'Event name:' %>
+    <%= f.text_field :name, placeholder: 'Event name or short description' %>
 
-<%= form_for(@event) do |f| %>
-  <%= f.label 'Event name:' %>
-  <%= f.text_field :name, placeholder: 'Event name or short description' %>
+    <%= f.label 'Event type:' %>
+    <div id="event-type-select">
+      <%= f.collection_select(
+        :game_type_id, GameType.all.order(:name), :id, :name,
+        include_blank: 'Select an event type'
+      ) %>
+      <span>or </span><%= link_to 'create a new event type', '#' %>
+    </div>
+    <div id="event-type-text" class="hidden">
+      <input name="event[game_type_text]" placeholder="Event type name">
+      <span>bring back the</span> <%= link_to 'event type drop-down', '#' %>
+    </div>
+    <br>
 
-  <%= f.label 'Event type:' %>
-  <div id="event-type-select">
-    <%= f.collection_select(
-      :game_type_id, GameType.all.order(:name), :id, :name,
-      include_blank: 'Select an event type'
-    ) %>
-    <span>or </span><%= link_to 'create a new event type', '#' %>
-  </div>
-  <div id="event-type-text" class="hidden">
-    <input name="event[game_type_text]" placeholder="Event type name">
-    <span>bring back the</span> <%= link_to 'event type drop-down', '#' %>
-  </div>
-  <br>
+    <%= f.label "Location: " %>
+    <div id="location-select">
+      <%= f.collection_select(
+        :location_id, Location.all.order(:name), :id, :name,
+        include_blank: 'Select a location'
+      ) %>
+      <span>or </span><%= link_to 'create a new location', '#' %>
+    </div>
+    <div id="location-text" class="hidden">
+      <input name="event[location_text]" placeholder="Location name">
+      <span>bring back the</span> <%= link_to 'location drop-down', '#' %>
+    </div>
+    <br>
 
-  <%= f.label "Location: " %>
-  <div id="location-select">
-    <%= f.collection_select(
-      :location_id, Location.all.order(:name), :id, :name,
-      include_blank: 'Select a location'
-    ) %>
-    <span>or </span><%= link_to 'create a new location', '#' %>
-  </div>
-  <div id="location-text" class="hidden">
-    <input name="event[location_text]" placeholder="Location name">
-    <span>bring back the</span> <%= link_to 'location drop-down', '#' %>
-  </div>
-  <br>
-
-  <%= f.label 'Date:' %>
-  <input name="event[date]" class="datepicker" placeholder="Pick a date">
-  <%= f.label 'Time:' %>
-  <input name="event[time]" class="timepicker" placeholder="Pick a time">
-  <%= f.label 'Minimum number of participants:' %>
-  <%= f.text_field :minimum_number %>
-  <%= f.submit 'Enter', class: 'submit button' %>
-<% end %>
-
-<%= button_to 'Cancel', events_path, method: :get %>
+    <%= f.label 'Date:' %>
+    <input name="event[date]" class="datepicker" placeholder="Pick a date">
+    <%= f.label 'Time:' %>
+    <input name="event[time]" class="timepicker" placeholder="Pick a time">
+    <%= f.label 'Minimum number of participants:' %>
+    <%= f.text_field :minimum_number %>
+    <%= f.submit 'Enter', class: 'submit button' %>
+  <% end %>
+</div>
 
 <script type="text/javascript">
   $('.datepicker').pickadate({
