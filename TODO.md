@@ -8,3 +8,5 @@
 - [ ] make game_type names and locations unique; add indices
 - [ ] add delete/edit buttons
 - [ ] remove signup form and delete user buttons from past events
+- [ ] flash errors are sticking around too long; use flash.now?
+- [ ] validations for date and time
