@@ -60,6 +60,7 @@
         <% game_type = event.game_type.name %>
         <% unless event.name.downcase.include?(game_type.downcase) ||
           (defined?(@game_type_id) && @game_type_id > 0) %>
+          <br>
           <span class="small"> (<%= game_type %>)</span>
         <% end %>
       </h2>

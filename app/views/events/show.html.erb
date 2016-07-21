@@ -4,8 +4,8 @@
     <h2><%= @event.name %>
       <% game_type = GameType.find(@event.game_type_id).name %>
       <% unless @event.name.downcase.include? game_type.downcase %>
-      <br>
-      <span class="small"> (<%= game_type %>)</span>
+        <br>
+        <span class="small"> (<%= game_type %>)</span>
       <% end %>
     </h2>
 
@@ -19,7 +19,7 @@
     </div>
 
     <% if !@event.description.nil? && @event.description.length > 0 %>
-      <p>Info: <%= @event.description %></p>
+      <p><%= @event.description %></p>
     <% end %>
     <p>Where: <%= @event.location.name %></p>
     <p>When: <%= @event.pretty_date %> @ <%= @event.pretty_time %></p>
