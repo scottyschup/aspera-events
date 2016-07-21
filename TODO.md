@@ -7,3 +7,4 @@
 - [ ] change game_type queries to names for more meaningful urls
 - [ ] make game_type names and locations unique; add indices
 - [ ] add delete/edit buttons
+- [ ] remove signup form and delete user buttons from past events
