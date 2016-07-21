@@ -1,8 +1,9 @@
 - [x] route to events index
-- [ ] make sure to use redirect_to instead of render when the url should change
-- [ ] get events for a single game_type with query string; i.e. '?game_type=name'
-- [ ] make game_type names uniq; add_index
-- [ ] handle errors and notices in views with partial
-- [ ] distinguish between past and future events in views
-- [ ] move game_type nav to nav_sidebar
-- [ ] remove all other nav links
+- [x] distinguish between past and future events in views
+- [x] handle errors and notices in views with partial
+- [x] move game_type nav to nav_sidebar
+- [x] remove all other nav links
+- [x] get events for a single game_type with query string; i.e. '?game_type=id'
+- [ ] change game_type queries to names for more meaningful urls
+- [ ] make game_type names and locations unique; add indices
+- [ ] add delete/edit buttons
