@@ -71,7 +71,8 @@ class EventsController < ApplicationController
 
     begin
       date_str = params[:event][:date] + params[:event][:time]
-      # Add 2 hours due to dates constantly being 2 hours behind (wtf right??)
+      # Add 2 hours due to dates constantly being 2 hours behind
+      # may need to remove when DST is done in the fall (wtf right??)
       eps[:date_time] = Time.zone.parse(date_str) + 2.hours
     rescue
       puts 'Date Time invalid: ', params[:event][:date], params[:event][:time]
