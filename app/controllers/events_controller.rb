@@ -71,7 +71,7 @@ class EventsController < ApplicationController
 
     begin
       date_str = params[:event][:date] + params[:event][:time]
-      eps[:date_time] = DateTime.parse("#{date_str} #{Time.zone}")
+      eps[:date_time] = Time.zone.parse(date_str)
     rescue
       puts 'Date Time invalid: ', params[:event][:date], params[:event][:time]
     end
