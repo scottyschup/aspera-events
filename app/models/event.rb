@@ -30,6 +30,6 @@ class Event < ActiveRecord::Base
   end
 
   def pretty_time
-    date_time.strftime('%H:%M %p')
+    date_time.strftime('%l:%M %P')
   end
 end
